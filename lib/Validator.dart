@@ -25,7 +25,7 @@ class Validators {
     }
 
     final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (!emailRegExp.hasMatch(email)) {
+    if (!emailRegExp.hasMatch(email.toString())) {
       return 'Please enter a valid email';
     }
     return null;
