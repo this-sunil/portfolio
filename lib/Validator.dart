@@ -1,4 +1,3 @@
-
 class Validators {
 
   validateUsername(String? username) {
@@ -23,7 +22,6 @@ class Validators {
 
   validateEmail(String? email) {
     if (email == null || email.isEmpty) {
-      return 'Email is required';
     }
 
     final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
