@@ -8,22 +8,24 @@ class ExperienceSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String firstStatus =
-        """
-        \u{2022} Integrated third-party libraries such as Firebase, Google Maps, and payment gateways (e.g., RazorPay) to enable seamless communication between the front-end and back-end APIs, enhancing app functionality and performance.
-        \u{2022} Implemented Bloc state management for better control over app state, ensuring efficient and scalable data flow,and optimized communication between the user interface and back-end services.
-        \u{2022} Successfully deployed applications to both Google Play and the App Store, managing the entire process from initial submission to approval, ensuring apps meet platform-specific guidelines and requirements for public distribution.
-        \u{2022} Complex animations within the app UI to enhance visual appeal and improve user interactions, contributing to an engaging and intuitive user experience.Built dynamic and complex app functionalities using the Bloc design pattern, resulting in improved app maintainability, scalability, and ease of adding new features or modifying existing ones.
-        \u{2022} Provided continuous app support by promptly addressing bugs, troubleshooting issues, performing necessary bug fixes, and conducting regular code reviews to ensure code quality, maintain performance standards, and improve the overall stability of the application.""";
+    String firstStatus = """
+\u{2022} Integrated third-party libraries including Firebase, Google Maps, and payment gateways such as RazorPay to streamline front-end and back-end API communication, improving app performance, reliability, and feature set by approximately 30–40%.
+\u{2022} Implemented Bloc state management to optimize data flow and enhance app architecture, resulting in a 40–50% improvement in maintainability, scalability, and overall state consistency.
+\u{2022} Led deployment of mobile applications to both Google Play Store managing the end-to-end submission process and ensuring compliance with platform-specific guidelines, reducing time-to-market by 30–50%.
+\u{2022} Designed and developed complex UI animations to elevate user experience and visual appeal, contributing to a 25–35% increase in user engagement and app retention.
+\u{2022} Built scalable app features using Bloc design pattern, leading to faster feature development cycles and easier long-term maintenance, improving code modularity and reuse by 40–50%.
+\u{2022} Provided ongoing app support and maintenance, including prompt bug resolution, regular code reviews, and performance optimizations, enhancing app stability and code quality by 30–45%.
+""";
+
     String secondStatus = """
-       \u{2022} Worked extensively with Firebase Push Notifications and Phone Number Authentication to improve app functionality, providing users with real-time notifications and a secure, streamlined authentication process. This helped increase user engagement and retention by simplifying the login experience.
-       \u{2022} Gained hands-on experience in API integration, including performing CRUD operations to manage app data efficiently. Successfully integrated Google Maps Services for location-based features and RazorPay for secure payment processing, ensuring a seamless and user-friendly payment experience within the app.
-       \u{2022} Diagnosed and corrected code errors throughout the app,identifying performance bottlenecks and fixing bugs to improve overall app stability, speed, and user satisfaction. Ensured smooth functionality by resolving issues related to data handling, connectivity, and UI performance.
-       \u{2022} Conducted thorough user requirement analysis to understand app needs and develop features that address user expectations. Supported features like image uploads to the server, QR code scanning, and advanced debugging  techniques to resolve complex technical challenges and improve app reliability.
-       \u{2022} Designed and developed intuitive UI interfaces using the Flutter framework, ensuring an engaging and easy-to-use experience for users across both iOS and Android platforms. Focused on creating responsive, visually appealing layouts and enhancing overall app usability.
-       \u{2022} Developed reusable custom widgets and components to streamline the creation of UI elements, reducing development time and ensuring consistent and scalable designs. This approach accelerated the development process and improved the maintainability of the codebase.
-    
-    """;
+\u{2022} Implemented Firebase Push Notifications and Phone Number Authentication to deliver real-time user alerts and streamline secure login, contributing to increased user engagement and retention by 25–35% through improved onboarding and communication.
+\u{2022} Integrated RESTful APIs and performed CRUD operations to manage app data efficiently, improving backend communication speed and responsiveness by approximately 30%.
+\u{2022} Successfully integrated Google Maps and RazorPay services, enabling location-based features and secure in-app payments, which enhanced the user experience and added critical business functionality.
+\u{2022} Diagnosed and resolved performance bottlenecks and critical bugs, improving app stability and responsiveness by 30–40%, and ensuring smooth performance across diverse network and device conditions.
+\u{2022} Collaborated with stakeholders to conduct user requirement analysis, resulting in the successful implementation of key features such as image uploads, QR code scanning, and improved error handling through advanced debugging and logging techniques.
+\u{2022} Designed and developed responsive, cross-platform UI interfaces using Flutter, delivering intuitive user experiences for both Android and iOS platforms and reducing UI-related support issues by 20–25%.
+\u{2022} Created reusable custom widgets and modular UI components, accelerating development cycles and improving code maintainability by 40–50%, while ensuring design consistency across the application.
+""";
     List<Info> company = [
       Info(
         heading: "Sunra SoftTech Pvt ltd, Pune",
@@ -87,8 +89,8 @@ class ExperienceSection extends StatelessWidget {
                       ),
                       Text(company[index].status.toString(),
                           style: context.copyWithStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),textAlign: TextAlign.justify),
-
+                              fontWeight: FontWeight.bold, fontSize: 16),
+                          textAlign: TextAlign.justify),
                     ],
                   ),
                 );

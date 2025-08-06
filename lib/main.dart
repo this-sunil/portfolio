@@ -9,7 +9,9 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform
   ).then((v){
-    print("Firebase Connected...!!!");
+    if (kDebugMode) {
+      print("Firebase Connected...!!!");
+    }
   });
   runApp(const MyApp());
 }
