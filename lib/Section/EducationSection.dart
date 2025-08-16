@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:heroicons/heroicons.dart';
+import 'package:lottie/lottie.dart';
 import '../AppConstant.dart';
 import '../Model/Info.dart';
+import '../component/SingleLessionStepCard.dart';
 
 class EducationSection extends StatelessWidget {
   const EducationSection({super.key});
@@ -26,59 +28,143 @@ class EducationSection extends StatelessWidget {
           startYear: "JULY 2014",
           endYear: "FEB 2015"),
       Info(
-          heading: "Dr.V.G. Kakasaheb Paranjape Vidyalaya,Rahimatpur",
+          heading: "Dr. V. G. Kakasaheb Paranjape Vidyalaya,Rahimatpur",
           subtitle: "S.S.C",
           startYear: "JULY 2012",
           endYear: "MARCH 2013"),
     ];
-    return  Card(
-      color: AppConstant.whiteColor,
-      child: Column(
-        children: [
-          Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(10),
-                      topLeft: Radius.circular(10)
-                  ),
-                  color: AppConstant.greenColor.withOpacity(.3)
-              ),
-              height: 50,
-              child:Padding(
-                  padding: EdgeInsets.all(8),
-                  child: Row(
-                    children: [
+    List<StepDetails> educationSteps = education.map((e) {
+      return StepDetails(
+        title: e.heading,
+        time: e.startYear,
+        duration: e.endYear,
+        name: e.subtitle,
+        isCompleted: true, // or any logic if needed
+      );
+    }).toList();
 
-                      Text("Education:",
-                          style: context.copyWithStyle(
-                              color: AppConstant.indigoColor,
-                              decoration: TextDecoration.underline,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              decorationColor: AppConstant.indigoColor)),
-                    ],
-                  ))),
-          ...List.generate(education.length, (index) {
-            return ListTile(
-              title: Text(education[index].heading,
-                  style: context.copyWithStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold)),
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: false,
+        backgroundColor: AppConstant.appColor,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            HeroIcon(HeroIcons.academicCap,color: AppConstant.whiteColor),
+            SizedBox(width: 10),
+            Text("Education",
+                style: context.copyWithStyle(
+                  color: AppConstant.whiteColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ))
+          ],
+        ),
+      ),
+      body: Container(
+          height: MediaQuery.sizeOf(context).height,
+          clipBehavior: Clip.hardEdge,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.deepPurple.shade500,
+                  Colors.deepOrange.shade400
+                ]),
+          ),
+          child:Column(
+        children: [
+          SizedBox(
+              width: 300,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(education[index].subtitle,
-                      style: context.copyWithStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16)),
-                  Text(
-                      "${education[index].startYear} - ${education[index].endYear}",
-                      style: context.copyWithStyle(
-                          fontWeight: FontWeight.bold, fontSize: 12))
+                  Lottie.asset("assets/icons/job.json",width: 250,height: 250),
                 ],
-              ),
-            );
-          })
+              )),
+          Expanded(child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+            child: ListView.builder(
+              itemCount: educationSteps.length,
+              itemBuilder: (ctx, index) {
+                int nextIndex = index + 1;
+                bool nextOneDone = true;
+                if (nextIndex < educationSteps.length) {
+                  nextOneDone = educationSteps[nextIndex].isCompleted;
+                }
+                return _buildStepCard(
+                  educationSteps[index],
+                  isFirst: index == 0,
+                  isLast: index == (educationSteps.length - 1),
+                  nextLessonCompleted: nextOneDone,
+                );
+              },
+            ),
+          ))
+        ],
+      )),
+    );
+  }
+
+  IntrinsicHeight _buildStepCard(StepDetails step,
+      {bool isFirst = false,
+        bool isLast = false,
+        bool nextLessonCompleted = false}) {
+    return IntrinsicHeight(
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                isFirst
+                    ? Expanded(child: Container())
+                    : Expanded(
+                  child: VerticalDivider(
+                    color: step.isCompleted ? Colors.green : Colors.grey,
+                    thickness: 2,
+                    width: 2,
+                  ),
+                ),
+                step.isCompleted
+                    ? Image.asset(
+                  'assets/icons/oval_red.png',
+                  color: Colors.green,
+                  width: 16,
+                )
+                    : Image.asset(
+                  'assets/icons/oval.png',
+                  width: 16,
+                  color: Colors.green,
+                ),
+                isLast
+                    ? Expanded(flex: 2, child: Container())
+                    : nextLessonCompleted
+                    ? Expanded(
+                  flex: 2,
+                  child: VerticalDivider(
+                    color:
+                    step.isCompleted ? Colors.green : Colors.grey,
+                    thickness: 2,
+                    width: 2,
+                  ),
+                )
+                    : const Expanded(
+                  flex: 2,
+                  child: VerticalDivider(
+                    color: Colors.grey,
+                    thickness: 2,
+                    width: 2,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(child: SingleLessonStepCard(step: step))
         ],
       ),
     );
   }
+
 }

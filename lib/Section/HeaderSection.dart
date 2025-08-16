@@ -1,136 +1,152 @@
-import 'package:bootstrap_icons/bootstrap_icons.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:portfolio/AppConstant.dart';
 import 'package:portfolio/animation/ScaleAnimation.dart';
 
-import 'dart:html' as html;
+import '../Responsive.dart';
 
 class HeaderSection extends StatelessWidget {
   const HeaderSection({super.key});
 
-  void downloadFile(String url, String fileName) {
-// Create a new anchor (<a>) element
-    final html.AnchorElement anchor = html.AnchorElement(href: url)
-      ..setAttribute(
-          'download', fileName) // Specify the file name for the download
-      ..target =
-          'blank'; // Optional, to open in a new tab (not necessary for download)
-
-// Trigger the download by simulating a click event
-    anchor.click();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraint) {
-      return Container(
+    return Container(
         decoration: BoxDecoration(
-          color: AppConstant.appColor,
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+            Colors.deepOrange.shade300,
+                Colors.deepPurpleAccent.shade700
+          ])
         ),
-        width: constraint.maxWidth,
-        height: 400,
-        child: Stack(
-          alignment: Alignment.center,
+        child: Column(
           children: [
-            Positioned(
-              top: 10,
-              right: 10,
-              child: ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.all(15),
-                      backgroundColor: AppConstant.indigoColor,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                  icon: Icon(BootstrapIcons.download,
-                      color: AppConstant.whiteColor),
-                  onPressed: () {
-                    downloadFile(
-                        'https://raw.githubusercontent.com/this-sunil/portfolio/main/Resume.pdf',
-                        'sunil-shedge_cv.jpg');
-                  },
-                  label: Text("Download CV",
-                      style: context.copyWithStyle(
-                          color: AppConstant.whiteColor, fontSize: 16))),
-            ),
-            Positioned(
-                top: 80,
-                child: ScaleAnimation(
+            SizedBox(height: 40),
+            SizedBox(
+              width: 200,
+              height: 200,
+              child: ScaleAnimation(
+                child: Card(
+                  shape: CircleBorder(),
+
                   child: CircleAvatar(
-                    maxRadius: 83,
-                    backgroundColor: AppConstant.whiteColor,
-                    child: CircleAvatar(
-                      maxRadius: 80,
-                      backgroundColor: AppConstant.whiteColor,
-                      backgroundImage: AssetImage("assets/icons/profile.jpeg"),
-                    ),
+                    maxRadius: 100,
+                    backgroundImage: AssetImage("assets/icons/profile.jpeg"),
                   ),
-                )),
-            Positioned(
-                bottom: 110,
-                child: Text(
-                  AppConstant.name,
-                  style: context.copyWithStyle(
-                      color: AppConstant.whiteColor, fontSize: 20),
-                )),
-            Positioned(
-                bottom: 80,
-                child: Text(
-                  AppConstant.headingText,
-                  style: context.copyWithStyle(
-                      color: AppConstant.whiteColor, fontSize: 20),
-                )),
-            Align(
-                alignment: Alignment.bottomCenter,
+                ),
+
+
+              ),
+            ),
+            Flexible(child: Lottie.asset("assets/icons/Welcome.json",width: 200,height:200)),
+            Expanded(
+                flex: 3,
                 child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                          padding: EdgeInsets.all(8),
-                          child: IconButton(
-                            onPressed: () async {
-                              await AppConstant()
-                                  .launchUri(Uri.parse(AppConstant.linkedIn));
-                            },
-                            icon: CircleAvatar(
-                              backgroundColor: AppConstant.indigoColor,
-                              child: Icon(BootstrapIcons.linkedin,
-                                  color: AppConstant.whiteColor, size: 20),
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                              padding: EdgeInsets.all(8),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                            children: [
+                              SizedBox(
+                                  width:MediaQuery.sizeOf(context).width/2,
+                                  child: Column(
+                                crossAxisAlignment:CrossAxisAlignment.start,
+                                children: [
+                                  Text("Hi, I am",
+                                      style: context.copyWithStyle(
+                                          fontSize: 40, color: AppConstant.whiteColor,fontWeight: FontWeight.bold)),
+                                  ShaderMask(
+                                      shaderCallback: (bounds) => LinearGradient(
+                                        colors: [Colors.tealAccent, Colors.blue],
+                                      ).createShader(Rect.fromLTWH(
+                                          0, 0, bounds.width, bounds.height)),
+                                      child: Text("Sunil Shedge",
+                                          style: context.copyWithStyle(
+                                            color: AppConstant.whiteColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 25,
+                                            shadows: [
+                                              Shadow(
+                                                offset: Offset(2, 2),
+                                                blurRadius: 8,
+                                                color: AppConstant.blackColor.withOpacity(
+                                                    0.3), // Add transparency for smoothness
+                                              ),
+                                              Shadow(
+                                                offset: Offset(2, 2),
+                                                blurRadius: 8,
+                                                color: AppConstant.blackColor.withOpacity(
+                                                    0.3), // Add transparency for smoothness
+                                              ),
+                                            ],
+                                          ))),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 3),
+                                    child: AnimatedTextKit(
+                                      animatedTexts: [
+                                        TypewriterAnimatedText(
+                                          'I am Flutter Developer',
+                                          cursor: "|",
+                                          textStyle: context.copyWithStyle(
+                                              fontSize: 35.0,
+                                              color: AppConstant.whiteColor,
+
+                                              fontWeight: FontWeight.bold),
+                                          speed: const Duration(milliseconds: 100),
+                                        ),
+                                        TypewriterAnimatedText(
+                                          '3+ years of experience',
+                                          cursor: "|",
+                                          textStyle: context.copyWithStyle(
+                                              fontSize: 35.0,
+                                              color: AppConstant.whiteColor,
+
+                                              fontWeight: FontWeight.bold),
+                                          speed: const Duration(milliseconds: 100),
+                                        ),
+                                      ],
+                                      isRepeatingAnimation: true,
+                                      totalRepeatCount: 10,
+                                      pause: const Duration(milliseconds: 500),
+                                      displayFullTextOnTap: true,
+                                    ),
+                                  ),
+
+                                ],
+                              )),
+                              if(Responsive.isDesktop(context))
+                              SizedBox(
+                                  width: 250,
+                                  child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Lottie.asset("assets/icons/job.json",width: 200,height: 200),
+                                ],
+                              ))
+                            ],
+                          )),
+
+                          Expanded(child: Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Text(
+                              "A passionate UI developer, with hands on experience of building high performing mobile applications, having a strong technical background. Highly adaptive to new technologies and frameworks & ready for all challenges associated with the industry. Always enthusiastic to learn new technologies which can help the clients solve their problems faster and provide better solutions.",
+                              style: context.copyWithStyle(
+                                  color: AppConstant.whiteColor,
+                                  fontSize: 16,
+                                  fontWeight: context.bold),
+                              textAlign: TextAlign.justify,
                             ),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.all(8),
-                          child: IconButton(
-                            onPressed: () async {
-                              await AppConstant().launchUri(Uri(
-                                  scheme: "mailto",
-                                  path: AppConstant.emailAddress));
-                            },
-                            icon: CircleAvatar(
-                                backgroundColor: AppConstant.orangeColor,
-                                child: Icon(Icons.email,
-                                    color: AppConstant.whiteColor, size: 20)),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.all(8),
-                          child: IconButton(
-                            onPressed: () async {
-                              await AppConstant().launchUri(Uri(
-                                  scheme: "tel",
-                                  path: AppConstant.phoneNumber));
-                            },
-                            icon: CircleAvatar(
-                                backgroundColor: AppConstant.greenColor,
-                                child: Icon(Icons.call,
-                                    color: AppConstant.whiteColor, size: 20)),
-                          )),
-                    ],
-                  ),
-                ))
+                          ),)
+                        ]))),
           ],
-        ),
-      );
-    });
+        ));
   }
 }

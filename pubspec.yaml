@@ -38,6 +38,13 @@ dependencies:
   google_fonts: ^6.2.1
   url_launcher: ^6.3.1
   firebase_core: ^3.11.0
+  flutter_launcher_icons: ^0.14.4
+  animated_text_kit: ^4.2.3
+  responsive_framework: ^1.5.1
+  flutter_svg: ^2.2.0
+  lottie: ^3.3.1
+  heroicons: ^0.11.0
+  syncfusion_flutter_charts: ^30.2.5
 
 dev_dependencies:
   flutter_test:

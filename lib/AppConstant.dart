@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AppConstant{
-  static const String appName="My Portfolio";
+  static const String appName="Sunil Shedge";
   static const String name="Sunil Shedge";
   static const String headingText="Flutter Developer";
   static const String phoneNumber="+918668796251";
@@ -49,15 +49,17 @@ extension TextStyleExtension on BuildContext {
     TextDecoration? decoration,
     Color? decorationColor,
     TextStyle? styleOverride,
+    List<Shadow>? shadows
   }) {
 
     return (styleOverride ?? style).copyWith(
-      fontFamily: GoogleFonts.bitter().fontFamily,
+      fontFamily: GoogleFonts.lato().fontFamily,
       color: color,
       fontSize: fontSize ?? 16.0,
       fontWeight: fontWeight,
       decoration: decoration,
-      decorationColor: decorationColor
+      decorationColor: decorationColor,
+      shadows: shadows
     );
   }
 }
