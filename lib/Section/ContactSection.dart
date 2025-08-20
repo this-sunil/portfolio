@@ -39,26 +39,7 @@ class _ContactSectionState extends State<ContactSection> {
   @override
   Widget build(BuildContext context) {
     final size=MediaQuery.sizeOf(context);
-    return Scaffold(
-        // appBar: AppBar(
-        //   centerTitle: false,
-        //   backgroundColor: AppConstant.appColor,
-        //   title: Row(
-        //     mainAxisAlignment: MainAxisAlignment.start,
-        //     children: [
-        //       HeroIcon(HeroIcons.devicePhoneMobile,
-        //           color: AppConstant.whiteColor),
-        //       SizedBox(width: 10),
-        //       Text("Contact",
-        //           style: context.copyWithStyle(
-        //             color: AppConstant.whiteColor,
-        //             fontSize: 18,
-        //             fontWeight: FontWeight.bold,
-        //           ))
-        //     ],
-        //   ),
-        // ),
-        body: Container(
+    return Container(
           width: size.width,
             height: size.height,
             clipBehavior: Clip.hardEdge,
@@ -90,6 +71,7 @@ class _ContactSectionState extends State<ContactSection> {
                     child:  Padding(padding: EdgeInsets.symmetric(horizontal: 60),child: Form(
                         key: formKey,
                         child:Column(
+                          mainAxisSize: MainAxisSize.min,
 
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -158,7 +140,6 @@ class _ContactSectionState extends State<ContactSection> {
 
                     )))
               ],
-            )))
-    );
+            )));
   }
 }

@@ -43,25 +43,7 @@ class EducationSection extends StatelessWidget {
       );
     }).toList();
 
-    return Scaffold(
-      // appBar: AppBar(
-      //   centerTitle: false,
-      //   backgroundColor: AppConstant.appColor,
-      //   title: Row(
-      //     mainAxisAlignment: MainAxisAlignment.start,
-      //     children: [
-      //       HeroIcon(HeroIcons.academicCap,color: AppConstant.whiteColor),
-      //       SizedBox(width: 10),
-      //       Text("Education",
-      //           style: context.copyWithStyle(
-      //             color: AppConstant.whiteColor,
-      //             fontSize: 18,
-      //             fontWeight: FontWeight.bold,
-      //           ))
-      //     ],
-      //   ),
-      // ),
-      body: Container(
+    return Container(
 
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
@@ -86,7 +68,7 @@ class EducationSection extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
             child: ListView.builder(
               padding: EdgeInsets.zero,
-              physics: ScrollPhysics(),
+              physics: BouncingScrollPhysics(),
               itemCount: educationSteps.length,
               itemBuilder: (ctx, index) {
                 int nextIndex = index + 1;
@@ -104,7 +86,7 @@ class EducationSection extends StatelessWidget {
             ),
           ))
         ],
-      )),
+      )
     );
   }
 

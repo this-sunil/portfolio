@@ -57,25 +57,7 @@ class ProjectSection extends StatelessWidget {
       ])
     ];
 
-    return Scaffold(
-        // appBar: AppBar(
-        //   centerTitle: false,
-        //   backgroundColor: AppConstant.appColor,
-        //   title: Row(
-        //     mainAxisAlignment: MainAxisAlignment.start,
-        //     children: [
-        //       HeroIcon(HeroIcons.folder, color: AppConstant.whiteColor),
-        //       SizedBox(width: 10),
-        //       Text("Projects",
-        //           style: context.copyWithStyle(
-        //             color: AppConstant.whiteColor,
-        //             fontSize: 18,
-        //             fontWeight: FontWeight.bold,
-        //           ))
-        //     ],
-        //   ),
-        // ),
-        body: Container(
+    return Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -169,6 +151,6 @@ class ProjectSection extends StatelessWidget {
               ))
             ],
           ),
-        ));
+        );
   }
 }

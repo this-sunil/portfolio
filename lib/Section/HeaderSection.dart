@@ -24,7 +24,9 @@ class HeaderSection extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 20),
-            Flexible(child: SizedBox(
+            Flexible(
+               flex: 2,
+                child: SizedBox(
               width: 150,
               height: 150,
               child: ScaleAnimation(
@@ -32,7 +34,7 @@ class HeaderSection extends StatelessWidget {
                   shape: CircleBorder(),
 
                   child: CircleAvatar(
-                    maxRadius: 100,
+                    maxRadius: 40,
                     backgroundImage: AssetImage("assets/icons/profile.jpeg"),
                   ),
                 ),
@@ -42,7 +44,7 @@ class HeaderSection extends StatelessWidget {
             )),
             Flexible(child: Lottie.asset("assets/icons/Welcome.json",width: 200,height:200)),
             Expanded(
-                flex: 3,
+                flex: 5,
                 child: Padding(
                     padding: EdgeInsets.all(20),
                     child: Column(
@@ -55,82 +57,85 @@ class HeaderSection extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                             children: [
-                              SizedBox(
-                                  width:MediaQuery.sizeOf(context).width/2,
-                                  child: Column(
-                                crossAxisAlignment:CrossAxisAlignment.start,
-                                children: [
-                                  Text("Hi, I am",
-                                      style: context.copyWithStyle(
-                                          fontSize: 40, color: AppConstant.whiteColor,fontWeight: FontWeight.bold)),
-                                  ShaderMask(
-                                      shaderCallback: (bounds) => LinearGradient(
-                                        colors: [Colors.tealAccent, Colors.blue],
-                                      ).createShader(Rect.fromLTWH(
-                                          0, 0, bounds.width, bounds.height)),
-                                      child: Text("Sunil Shedge",
-                                          style: context.copyWithStyle(
-                                            color: AppConstant.whiteColor,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 25,
-                                            shadows: [
-                                              Shadow(
-                                                offset: Offset(2, 2),
-                                                blurRadius: 8,
-                                                color: AppConstant.blackColor.withOpacity(
-                                                    0.3), // Add transparency for smoothness
-                                              ),
-                                              Shadow(
-                                                offset: Offset(2, 2),
-                                                blurRadius: 8,
-                                                color: AppConstant.blackColor.withOpacity(
-                                                    0.3), // Add transparency for smoothness
-                                              ),
-                                            ],
-                                          ))),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 3),
-                                    child: AnimatedTextKit(
-                                      animatedTexts: [
-                                        TypewriterAnimatedText(
-                                          'I am Flutter Developer',
-                                          cursor: "|",
-                                          textStyle: context.copyWithStyle(
-                                              fontSize: 35.0,
-                                              color: AppConstant.whiteColor,
+                             Flexible(
+                                 flex:2,
+                                 child:  SizedBox(
+                                 width:MediaQuery.sizeOf(context).width/2,
+                                 child: Column(
+                                   crossAxisAlignment:CrossAxisAlignment.start,
+                                   children: [
+                                     Text("Hi, I am",
+                                         style: context.copyWithStyle(
+                                             fontSize: 40, color: AppConstant.whiteColor,fontWeight: FontWeight.bold)),
+                                     ShaderMask(
+                                         shaderCallback: (bounds) => LinearGradient(
+                                           colors: [Colors.tealAccent, Colors.blue],
+                                         ).createShader(Rect.fromLTWH(
+                                             0, 0, bounds.width, bounds.height)),
+                                         child: Text("Sunil Shedge",
+                                             style: context.copyWithStyle(
+                                               color: AppConstant.whiteColor,
+                                               fontWeight: FontWeight.bold,
+                                               fontSize: 25,
+                                               shadows: [
+                                                 Shadow(
+                                                   offset: Offset(2, 2),
+                                                   blurRadius: 8,
+                                                   color: AppConstant.blackColor.withOpacity(
+                                                       0.3), // Add transparency for smoothness
+                                                 ),
+                                                 Shadow(
+                                                   offset: Offset(2, 2),
+                                                   blurRadius: 8,
+                                                   color: AppConstant.blackColor.withOpacity(
+                                                       0.3), // Add transparency for smoothness
+                                                 ),
+                                               ],
+                                             ))),
+                                     Padding(
+                                       padding: const EdgeInsets.symmetric(horizontal: 3),
+                                       child: AnimatedTextKit(
+                                         animatedTexts: [
+                                           TypewriterAnimatedText(
+                                             'I am Flutter Developer',
+                                             cursor: "|",
+                                             textStyle: context.copyWithStyle(
+                                                 fontSize: 35.0,
+                                                 color: AppConstant.whiteColor,
 
-                                              fontWeight: FontWeight.bold),
-                                          speed: const Duration(milliseconds: 100),
-                                        ),
-                                        TypewriterAnimatedText(
-                                          '3+ years of experience',
-                                          cursor: "|",
-                                          textStyle: context.copyWithStyle(
-                                              fontSize: 35.0,
-                                              color: AppConstant.whiteColor,
+                                                 fontWeight: FontWeight.bold),
+                                             speed: const Duration(milliseconds: 100),
+                                           ),
+                                           TypewriterAnimatedText(
+                                             '3+ years of experience',
+                                             cursor: "|",
+                                             textStyle: context.copyWithStyle(
+                                                 fontSize: 24.0,
+                                                 color: AppConstant.whiteColor,
 
-                                              fontWeight: FontWeight.bold),
-                                          speed: const Duration(milliseconds: 100),
-                                        ),
-                                      ],
-                                      isRepeatingAnimation: true,
-                                      totalRepeatCount: 10,
-                                      pause: const Duration(milliseconds: 500),
-                                      displayFullTextOnTap: true,
-                                    ),
-                                  ),
+                                                 fontWeight: FontWeight.bold),
+                                             speed: const Duration(milliseconds: 100),
+                                           ),
+                                         ],
+                                         isRepeatingAnimation: true,
+                                         totalRepeatCount: 10,
+                                         pause: const Duration(milliseconds: 500),
+                                         displayFullTextOnTap: true,
+                                       ),
+                                     ),
 
-                                ],
-                              )),
-                              if(Responsive.isDesktop(context))
-                              SizedBox(
-                                  width: 250,
-                                  child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Lottie.asset("assets/icons/job.json",width: 200,height: 200),
-                                ],
-                              ))
+                                   ],
+                                 ))),
+
+                              Responsive.isMobile(context)?SizedBox.shrink(): SizedBox(
+                                 width: 250,
+                                 child: Column(
+                                   mainAxisAlignment: MainAxisAlignment.end,
+                                   children: [
+                                     Lottie.asset("assets/icons/job.json",width: 200,height: 200),
+                                   ],
+                                 ))
+
                             ],
                           )),
 

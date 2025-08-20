@@ -59,25 +59,7 @@ class SkillSection extends StatelessWidget {
       ]),
     ];
 
-    return Scaffold(
-      // appBar: AppBar(
-      //   centerTitle: false,
-      //   backgroundColor: AppConstant.appColor,
-      //   title: Row(
-      //     mainAxisAlignment: MainAxisAlignment.start,
-      //     children: [
-      //       HeroIcon(HeroIcons.scale, color: AppConstant.whiteColor),
-      //       SizedBox(width: 10),
-      //       Text("Skills",
-      //           style: context.copyWithStyle(
-      //             color: AppConstant.whiteColor,
-      //             fontSize: 18,
-      //             fontWeight: FontWeight.bold,
-      //           ))
-      //     ],
-      //   ),
-      // ),
-      body:Container(
+    return Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -90,12 +72,12 @@ class SkillSection extends StatelessWidget {
         ),
         child: GridView.builder(
           clipBehavior: Clip.hardEdge,
-            physics:PageScrollPhysics(),
+            physics:NeverScrollableScrollPhysics(),
             padding: EdgeInsets.all(8),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisSpacing: 1,
                 mainAxisSpacing: 1,
-                childAspectRatio: Responsive.isMobile(context)?9/16:16/9,
+                childAspectRatio: Responsive.isMobile(context)?0.8:16/9,
                 crossAxisCount: Responsive.isMobile(context)?2:3),
             itemCount: skill.length,
             itemBuilder: (context, index) {
@@ -146,8 +128,6 @@ class SkillSection extends StatelessWidget {
                       ],
                     ),
                   ));
-            })),
-
-    );
+            }));
   }
 }

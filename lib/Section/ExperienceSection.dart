@@ -42,25 +42,7 @@ class ExperienceSection extends StatelessWidget {
         status: secondStatus,
       ),
     ];
-    return Scaffold(
-        // appBar: AppBar(
-        //   centerTitle: false,
-        //   backgroundColor: AppConstant.appColor,
-        //   title: Row(
-        //     mainAxisAlignment: MainAxisAlignment.start,
-        //     children: [
-        //       HeroIcon(HeroIcons.star,color: AppConstant.whiteColor),
-        //       SizedBox(width: 10),
-        //       Text("Experience",
-        //           style: context.copyWithStyle(
-        //             color: AppConstant.whiteColor,
-        //             fontSize: 18,
-        //             fontWeight: FontWeight.bold,
-        //           ))
-        //     ],
-        //   ),
-        // ),
-        body:Container(
+    return Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -75,7 +57,7 @@ class ExperienceSection extends StatelessWidget {
             child:ListView.builder(
 
 
-          physics: ScrollPhysics(),
+          physics: NeverScrollableScrollPhysics(),
 
           padding: EdgeInsets.all(8),
           itemCount: company.length,
@@ -97,7 +79,7 @@ class ExperienceSection extends StatelessWidget {
 
                 ),
                 child:  Padding(
-                  padding: const EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(10),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,6 +126,6 @@ class ExperienceSection extends StatelessWidget {
               ),
             );
           },
-        )));
+        ));
   }
 }

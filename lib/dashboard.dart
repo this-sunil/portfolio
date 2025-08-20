@@ -106,7 +106,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                 clipBehavior: Clip.hardEdge,
                 scrollBehavior: ScrollBehavior().copyWith(overscroll: false),
-                physics: PageScrollPhysics(),
+                physics: BouncingScrollPhysics(),
                 onPageChanged: (index) {
                   setState(() {
                     currentIndex = index;
