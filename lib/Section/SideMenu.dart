@@ -270,7 +270,6 @@ class MenuTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isSelected = selected.contains(currentIndex);
-
     return Card(
       margin: const EdgeInsets.only(right: 5, top: 5, bottom: 5),
       elevation: isSelected ? 20 : 0,
@@ -291,7 +290,7 @@ class MenuTile extends StatelessWidget {
         contentPadding: const EdgeInsets.all(4),
         leading: SizedBox(
           width: 50,
-          height: 60,
+          height: 50,
           child: Card(
             elevation: 10,
             shape: RoundedRectangleBorder(

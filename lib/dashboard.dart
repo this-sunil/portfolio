@@ -97,7 +97,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         },
                         label: Text("Download CV",
                             style: context.copyWithStyle(
-                                color: AppConstant.whiteColor,fontSize: 14,fontWeight: FontWeight.bold)))),
+                                color: AppConstant.whiteColor,fontSize: 12,fontWeight: FontWeight.bold)))),
               ],
             ),
       body:  PageView(

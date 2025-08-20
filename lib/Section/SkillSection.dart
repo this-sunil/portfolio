@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../AppConstant.dart';
 import '../Model/ChartData.dart';
@@ -87,64 +88,72 @@ class SkillSection extends StatelessWidget {
                   Colors.deepPurpleAccent.shade400
                 ])
         ),
-        child: GridView.builder(
-            physics: ScrollPhysics(),
-            padding: EdgeInsets.all(8),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisSpacing: 1,
-                mainAxisSpacing: 1,
-                childAspectRatio: Responsive.isMobile(context)?9/16:16/9,
-                crossAxisCount: Responsive.isMobile(context)?2:3),
-            itemCount: skill.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  child: Card(
-                    color: AppConstant.appColor,
-                    child: SfCircularChart(
-                      enableMultiSelection: true,
+        child: Column(
+          children: [
+            Flexible(
+                flex: 2,
+                child: Lottie.asset("assets/icons/Welcome.json",width: 200,height:200)),
+            Expanded(
+                flex: 5,
+                child: GridView.builder(
+              physics: ScrollPhysics(),
+              padding: EdgeInsets.all(8),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisSpacing: 1,
+                  mainAxisSpacing: 1,
+                  childAspectRatio: Responsive.isMobile(context)?9/16:16/9,
+                  crossAxisCount: Responsive.isMobile(context)?2:3),
+              itemCount: skill.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8),
+                    child: Card(
+                      color: AppConstant.appColor,
+                      child: SfCircularChart(
+                        enableMultiSelection: true,
 
-                      tooltipBehavior: TooltipBehavior(enable: true),
-                      selectionGesture: ActivationMode.singleTap,
-                      title: ChartTitle(
+                        tooltipBehavior: TooltipBehavior(enable: true),
+                        selectionGesture: ActivationMode.singleTap,
+                        title: ChartTitle(
 
-                          text: skill[index].title,
-                          alignment: ChartAlignment.center,
+                            text: skill[index].title,
+                            alignment: ChartAlignment.center,
 
-                          textStyle: context.copyWithStyle(
+                            textStyle: context.copyWithStyle(
 
-                              fontWeight: FontWeight.bold,color: AppConstant.whiteColor, fontSize: 16)),
-                      legend: Legend(isVisible: true,textStyle: context.copyWithStyle(color: AppConstant.whiteColor)),
-                      series: <DoughnutSeries<ChartData, String>>[
-                        DoughnutSeries<ChartData, String>(
-                          groupMode: CircularChartGroupMode.point,
-                          dataSource: List.generate(skill[index].description.length, (current)=>ChartData(
+                                fontWeight: FontWeight.bold,color: AppConstant.whiteColor, fontSize: 16)),
+                        legend: Legend(isVisible: true,textStyle: context.copyWithStyle(color: AppConstant.whiteColor)),
+                        series: <DoughnutSeries<ChartData, String>>[
+                          DoughnutSeries<ChartData, String>(
+                            groupMode: CircularChartGroupMode.point,
+                            dataSource: List.generate(skill[index].description.length, (current)=>ChartData(
 
-                              skill[index].description[current].category, skill[index].description[current].value,skill[index].description[current].color)),
-                          xValueMapper: (ChartData data, _) => data.category,
-                          yValueMapper: (ChartData data, _) => data.value,
-                          emptyPointSettings: EmptyPointSettings(
-                              mode: EmptyPointMode.gap,
-                              color: Colors.grey
-                          ),
-                          dataLabelSettings: DataLabelSettings(
-                              isVisible: true),
-                          radius: '70%', // Controls the outer size
-                          innerRadius: '60%',
-                          cornerStyle: CornerStyle.bothFlat,
-                          explodeGesture: ActivationMode.singleTap,
-                          enableTooltip: true,
+                                skill[index].description[current].category, skill[index].description[current].value,skill[index].description[current].color)),
+                            xValueMapper: (ChartData data, _) => data.category,
+                            yValueMapper: (ChartData data, _) => data.value,
+                            emptyPointSettings: EmptyPointSettings(
+                                mode: EmptyPointMode.gap,
+                                color: Colors.grey
+                            ),
+                            dataLabelSettings: DataLabelSettings(
+                                isVisible: true),
+                            radius: '70%', // Controls the outer size
+                            innerRadius: '60%',
+                            cornerStyle: CornerStyle.bothFlat,
+                            explodeGesture: ActivationMode.singleTap,
+                            enableTooltip: true,
 
-                          legendIconType: LegendIconType.diamond,
+                            legendIconType: LegendIconType.diamond,
 
 
-                          animationDuration: 1000, // Duration in milliseconds
-                          explode: true, // Makes it a donut instead of pie
-                        )
-                      ],
-                    ),
-                  ));
-            }),
+                            animationDuration: 1000, // Duration in milliseconds
+                            explode: true, // Makes it a donut instead of pie
+                          )
+                        ],
+                      ),
+                    ));
+              }))],
+        ),
       ),
     );
   }
