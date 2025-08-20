@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:heroicons/heroicons.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../AppConstant.dart';
 import '../Model/ChartData.dart';
@@ -25,8 +24,8 @@ class SkillSection extends StatelessWidget {
     List<Skills> skill = [
       Skills(title: "Front End", description: [
         ChartData("HTML", 50,getRandomColor()),
-        ChartData("CSS/Bootstrap", 60,getRandomColor()),
-        ChartData("JavaScript/Jquery", 60,getRandomColor()),
+        ChartData("CSS", 60,getRandomColor()),
+        ChartData("JavaScript", 60,getRandomColor()),
         ChartData("Flutter & Dart", 80,getRandomColor()),
       ]),
       Skills(title: "State Management", description: [
@@ -90,14 +89,12 @@ class SkillSection extends StatelessWidget {
         ),
         child: GridView.builder(
             physics: ScrollPhysics(),
-            padding: EdgeInsets.all(20),
-
+            padding: EdgeInsets.all(8),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisSpacing: 2,
-                mainAxisSpacing: 2,
-                childAspectRatio: 1.5,
-
-                crossAxisCount: Responsive.isMobile(context)?1:3),
+                crossAxisSpacing: 1,
+                mainAxisSpacing: 1,
+                childAspectRatio: Responsive.isMobile(context)?9/16:16/9,
+                crossAxisCount: Responsive.isMobile(context)?2:3),
             itemCount: skill.length,
             itemBuilder: (context, index) {
               return Padding(
@@ -106,23 +103,26 @@ class SkillSection extends StatelessWidget {
                     color: AppConstant.appColor,
                     child: SfCircularChart(
                       enableMultiSelection: true,
+
                       tooltipBehavior: TooltipBehavior(enable: true),
                       selectionGesture: ActivationMode.singleTap,
                       title: ChartTitle(
-                          borderWidth: 20,
+
                           text: skill[index].title,
                           alignment: ChartAlignment.center,
+
                           textStyle: context.copyWithStyle(
-                              fontWeight: FontWeight.bold,color: AppConstant.whiteColor, fontSize: 18)),
+
+                              fontWeight: FontWeight.bold,color: AppConstant.whiteColor, fontSize: 16)),
                       legend: Legend(isVisible: true,textStyle: context.copyWithStyle(color: AppConstant.whiteColor)),
                       series: <DoughnutSeries<ChartData, String>>[
                         DoughnutSeries<ChartData, String>(
                           groupMode: CircularChartGroupMode.point,
-                          dataSource: List.generate(skill[index].description.length, (current)=>ChartData(skill[index].description[current].category, skill[index].description[current].value,skill[index].description[current].color)),
+                          dataSource: List.generate(skill[index].description.length, (current)=>ChartData(
+
+                              skill[index].description[current].category, skill[index].description[current].value,skill[index].description[current].color)),
                           xValueMapper: (ChartData data, _) => data.category,
                           yValueMapper: (ChartData data, _) => data.value,
-
-
                           emptyPointSettings: EmptyPointSettings(
                               mode: EmptyPointMode.gap,
                               color: Colors.grey
@@ -130,12 +130,13 @@ class SkillSection extends StatelessWidget {
                           dataLabelSettings: DataLabelSettings(
                               isVisible: true),
                           radius: '70%', // Controls the outer size
-                          innerRadius: '50%',
+                          innerRadius: '60%',
                           cornerStyle: CornerStyle.bothFlat,
                           explodeGesture: ActivationMode.singleTap,
                           enableTooltip: true,
 
                           legendIconType: LegendIconType.diamond,
+
 
                           animationDuration: 1000, // Duration in milliseconds
                           explode: true, // Makes it a donut instead of pie

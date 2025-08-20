@@ -24,7 +24,7 @@ class HeaderSection extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 20),
-            SizedBox(
+            Flexible(child: SizedBox(
               width: 150,
               height: 150,
               child: ScaleAnimation(
@@ -39,7 +39,7 @@ class HeaderSection extends StatelessWidget {
 
 
               ),
-            ),
+            )),
             Flexible(child: Lottie.asset("assets/icons/Welcome.json",width: 200,height:200)),
             Expanded(
                 flex: 3,
@@ -137,7 +137,7 @@ class HeaderSection extends StatelessWidget {
                           Expanded(child: Padding(
                             padding: const EdgeInsets.all(8),
                             child: Text(
-                              "A passionate UI developer, with hands on experience of building high performing mobile applications, having a strong technical background. Highly adaptive to new technologies and frameworks & ready for all challenges associated with the industry. Always enthusiastic to learn new technologies which can help the clients solve their problems faster and provide better solutions.",
+                              "A passionate UI developer, with hands on experience of building high performing mobile applications, having a strong technical background. Highly adaptive to new technologies and frameworks & ready for all challenges associated with the industry.",
                               style: context.copyWithStyle(
                                   color: AppConstant.whiteColor,
                                   fontSize: 16,

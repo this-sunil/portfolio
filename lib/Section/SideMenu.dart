@@ -63,45 +63,55 @@ class _SideMenuState extends State<SideMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 300,
-      decoration: BoxDecoration(color: AppConstant.appColor),
-      child: Column(
-        children: [
-          SizedBox(height: 10),
-          Padding(
-              padding: EdgeInsets.all(10),
-              child: CircleAvatar(
-                maxRadius: 60,
-                backgroundImage: AssetImage("assets/icons/profile.jpeg"),
-              )),
-          SizedBox(height: 10),
-          ShaderMask(
-              shaderCallback: (bounds) => LinearGradient(
-                    colors: [Colors.purple, Colors.blue],
-                  ).createShader(
-                      Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
-              child: Text("Sunil Shedge",
-                  style: context.copyWithStyle(
-                    color: AppConstant.whiteColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    shadows: [
-                      Shadow(
-                        offset: Offset(2, 2),
-                        blurRadius: 8,
-                        color: AppConstant.blackColor.withOpacity(
-                            0.3), // Add transparency for smoothness
-                      ),
-                      Shadow(
-                        offset: Offset(2, 2),
-                        blurRadius: 8,
-                        color: AppConstant.blackColor.withOpacity(
-                            0.3), // Add transparency for smoothness
-                      ),
-                    ],
-                  ))),
-          /*ShaderMask(
+    return Drawer(
+      clipBehavior: Clip.hardEdge,
+      backgroundColor: AppConstant.appColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero
+      ),
+      child: Opacity(opacity: 1,child:NestedScrollView(headerSliverBuilder: (context,scroll){
+        return [
+          SliverToBoxAdapter(
+            child: Container(
+                width: 300,
+
+                decoration: BoxDecoration(color: AppConstant.appColor),
+                child: Column(
+                  children: [
+                    SizedBox(height: 10),
+                    Padding(
+                        padding: EdgeInsets.all(10),
+                        child: CircleAvatar(
+                          maxRadius: 60,
+                          backgroundImage: AssetImage("assets/icons/profile.jpeg"),
+                        )),
+                    SizedBox(height: 10),
+                    ShaderMask(
+                        shaderCallback: (bounds) => LinearGradient(
+                          colors: [Colors.purple, Colors.blue],
+                        ).createShader(
+                            Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
+                        child: Text("Sunil Shedge",
+                            style: context.copyWithStyle(
+                              color: AppConstant.whiteColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25,
+                              shadows: [
+                                Shadow(
+                                  offset: Offset(2, 2),
+                                  blurRadius: 8,
+                                  color: AppConstant.blackColor.withOpacity(
+                                      0.3), // Add transparency for smoothness
+                                ),
+                                Shadow(
+                                  offset: Offset(2, 2),
+                                  blurRadius: 8,
+                                  color: AppConstant.blackColor.withOpacity(
+                                      0.3), // Add transparency for smoothness
+                                ),
+                              ],
+                            ))),
+                    /*ShaderMask(
               shaderCallback: (bounds) => LinearGradient(
                     colors: [Colors.purple, Colors.blue],
                   ).createShader(
@@ -126,116 +136,119 @@ class _SideMenuState extends State<SideMenu> {
                       ),
                     ],
                   ))),*/
-          SizedBox(height: 10),
-          SingleChildScrollView(
-            physics: ScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                MenuTile(
-                  currentIndex: 0,
-                  onChange: (index) {
-                    multiSelect(index);
-                    widget.controller.jumpToPage(0);
-                  },
-                  title: "About",
-                  icons: HeroIcon(HeroIcons.informationCircle,
-                      color: selected.contains(0)
-                          ? AppConstant.whiteColor
-                          : AppConstant.blackColor),
-                ),
-                MenuTile(
-                  currentIndex: 1,
-                  onChange: (index) {
-                    multiSelect(index);
-                    widget.controller.jumpToPage(1);
-                  },
-                  title: "Experience",
-                  icons: HeroIcon(HeroIcons.star,
-                      color: selected.contains(1)
-                          ? AppConstant.whiteColor
-                          : AppConstant.blackColor),
-                ),
-                MenuTile(
-                  currentIndex: 2,
-                  onChange: (index) {
-                    multiSelect(index);
-                    widget.controller.jumpToPage(2);
-                  },
-                  title: "Skills",
-                  icons: HeroIcon(HeroIcons.scale,
-                      color: selected.contains(2)
-                          ? AppConstant.whiteColor
-                          : AppConstant.blackColor),
-                ),
-                MenuTile(
-                  currentIndex: 3,
-                  onChange: (index) {
-                    multiSelect(index);
-                    widget.controller.jumpToPage(3);
-                  },
-                  title: "Education",
-                  icons: HeroIcon(HeroIcons.academicCap,
-                      color: selected.contains(3)
-                          ? AppConstant.whiteColor
-                          : AppConstant.blackColor),
-                ),
-                MenuTile(
-                  currentIndex: 4,
-                  onChange: (index) {
-                    multiSelect(index);
-                    widget.controller.jumpToPage(4);
-                  },
-                  title: "Projects",
-                  icons: HeroIcon(HeroIcons.folder,
-                      color: selected.contains(4)
-                          ? AppConstant.whiteColor
-                          : AppConstant.blackColor),
-                ),
-                MenuTile(
-                  currentIndex: 5,
-                  onChange: (index) {
-                    multiSelect(index);
-                    widget.controller.jumpToPage(5);
-                  },
-                  title: "Contact",
-                  icons: HeroIcon(HeroIcons.devicePhoneMobile,
-                      color: selected.contains(5)
-                          ? AppConstant.whiteColor
-                          : AppConstant.blackColor),
-                ),
-                MenuTile(
-                  currentIndex: 6,
-                  onChange: (index) async{
-                    multiSelect(index);
-                    await launchUrlLink("https://www.linkedin.com/in/sunilshedge");
-                  },
-                  title: "LinkedIn",
-                  icons: Icon(BootstrapIcons.linkedin,
-                      color: selected.contains(6)
-                          ? AppConstant.whiteColor
-                          : AppConstant.blackColor),
-                ),
-                MenuTile(
-                  currentIndex: 7,
-                  onChange: (index) {
-                    multiSelect(7);
-                    downloadFile(
-                        'https://raw.githubusercontent.com/this-sunil/portfolio/main/Resume.pdf',
-                        'sunil-shedge_cv.jpg');
-                  },
-                  title: "Download CV",
-                  icons: HeroIcon(HeroIcons.arrowDownCircle,
-                      color: selected.contains(7)
-                          ? AppConstant.whiteColor
-                          : AppConstant.blackColor),
-                ),
-              ],
-            ),
+                    SizedBox(height: 10),
+
+                  ],
+                )),
           )
-        ],
-      ),
-    );
+        ];
+      }, body:  SingleChildScrollView(
+        physics: ScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            MenuTile(
+              currentIndex: 0,
+              onChange: (index) {
+                multiSelect(index);
+                widget.controller.jumpToPage(0);
+              },
+              title: "About",
+              icons: HeroIcon(HeroIcons.informationCircle,
+                  color: selected.contains(0)
+                      ? AppConstant.whiteColor
+                      : AppConstant.blackColor),
+            ),
+            MenuTile(
+              currentIndex: 1,
+              onChange: (index) {
+                multiSelect(index);
+                widget.controller.jumpToPage(1);
+              },
+              title: "Experience",
+              icons: HeroIcon(HeroIcons.star,
+                  color: selected.contains(1)
+                      ? AppConstant.whiteColor
+                      : AppConstant.blackColor),
+            ),
+            MenuTile(
+              currentIndex: 2,
+              onChange: (index) {
+                multiSelect(index);
+                widget.controller.jumpToPage(2);
+              },
+              title: "Skills",
+              icons: HeroIcon(HeroIcons.scale,
+                  color: selected.contains(2)
+                      ? AppConstant.whiteColor
+                      : AppConstant.blackColor),
+            ),
+            MenuTile(
+              currentIndex: 3,
+              onChange: (index) {
+                multiSelect(index);
+                widget.controller.jumpToPage(3);
+              },
+              title: "Education",
+              icons: HeroIcon(HeroIcons.academicCap,
+                  color: selected.contains(3)
+                      ? AppConstant.whiteColor
+                      : AppConstant.blackColor),
+            ),
+            MenuTile(
+              currentIndex: 4,
+              onChange: (index) {
+                multiSelect(index);
+                widget.controller.jumpToPage(4);
+              },
+              title: "Projects",
+              icons: HeroIcon(HeroIcons.folder,
+                  color: selected.contains(4)
+                      ? AppConstant.whiteColor
+                      : AppConstant.blackColor),
+            ),
+            MenuTile(
+              currentIndex: 5,
+              onChange: (index) {
+                multiSelect(index);
+                widget.controller.jumpToPage(5);
+              },
+              title: "Contact",
+              icons: HeroIcon(HeroIcons.devicePhoneMobile,
+                  color: selected.contains(5)
+                      ? AppConstant.whiteColor
+                      : AppConstant.blackColor),
+            ),
+            MenuTile(
+              currentIndex: 6,
+              onChange: (index) async{
+                multiSelect(index);
+                await launchUrlLink("https://www.linkedin.com/in/sunilshedge");
+              },
+              title: "LinkedIn",
+              icons: Icon(BootstrapIcons.linkedin,
+                  color: selected.contains(6)
+                      ? AppConstant.whiteColor
+                      : AppConstant.blackColor),
+            ),
+            MenuTile(
+              currentIndex: 7,
+              onChange: (index) {
+                multiSelect(7);
+                downloadFile(
+                    'https://raw.githubusercontent.com/this-sunil/portfolio/main/Resume.pdf',
+                    'sunil-shedge_cv.jpg');
+              },
+              title: "Download CV",
+              icons: HeroIcon(HeroIcons.arrowDownCircle,
+                  color: selected.contains(7)
+                      ? AppConstant.whiteColor
+                      : AppConstant.blackColor),
+            ),
+          ],
+        ),
+      )),
+      ));
   }
 }
 
