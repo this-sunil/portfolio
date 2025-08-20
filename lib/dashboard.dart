@@ -103,9 +103,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body:  PageView(
                 scrollDirection: Axis.vertical,
                 controller: pageController,
+
                 clipBehavior: Clip.hardEdge,
                 scrollBehavior: ScrollBehavior().copyWith(overscroll: false),
-                physics: ScrollPhysics(),
+                physics: PageScrollPhysics(),
                 onPageChanged: (index) {
                   setState(() {
                     currentIndex = index;
