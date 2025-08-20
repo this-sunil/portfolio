@@ -100,6 +100,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 color: AppConstant.whiteColor,fontSize: 12,fontWeight: FontWeight.bold)))),
               ],
             ),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        currentIndex==5?pageController.animateToPage(0,  duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn):pageController.nextPage(duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+      },child: Icon(Icons.keyboard_arrow_right_outlined),),
       body:  PageView(
                 scrollDirection: Axis.vertical,
                 controller: pageController,
@@ -121,6 +124,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ContactSection()
                 ],
               )
+
     );
   }
 }

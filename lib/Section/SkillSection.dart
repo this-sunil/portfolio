@@ -72,12 +72,12 @@ class SkillSection extends StatelessWidget {
         ),
         child: GridView.builder(
           clipBehavior: Clip.hardEdge,
-            physics:NeverScrollableScrollPhysics(),
+            physics:BouncingScrollPhysics(),
             padding: EdgeInsets.all(8),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisSpacing: 1,
                 mainAxisSpacing: 1,
-                childAspectRatio: Responsive.isMobile(context)?0.8:16/9,
+                childAspectRatio: Responsive.isMobile(context)?9/16:16/9,
                 crossAxisCount: Responsive.isMobile(context)?2:3),
             itemCount: skill.length,
             itemBuilder: (context, index) {
