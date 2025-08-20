@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     splashAnimation=StepTween(begin: splashController.duration!.inSeconds,end: 0).animate(CurvedAnimation(parent: splashController, curve: Curves.fastOutSlowIn));
     splashController.forward();
     splashController.addStatusListener((status){
-      if(status==AnimationStatus.completed){
+      if(status==AnimationStatus.completed || splashAnimation.value==1){
         MaterialPageRoute route=MaterialPageRoute(builder: (_)=>DashboardScreen());
         Navigator.of(context).pushAndRemoveUntil(route,(s)=>false);
       }

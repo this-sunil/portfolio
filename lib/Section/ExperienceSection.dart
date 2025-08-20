@@ -43,24 +43,37 @@ class ExperienceSection extends StatelessWidget {
       ),
     ];
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: false,
-          backgroundColor: AppConstant.appColor,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              HeroIcon(HeroIcons.star,color: AppConstant.whiteColor),
-              SizedBox(width: 10),
-              Text("Experience",
-                  style: context.copyWithStyle(
-                    color: AppConstant.whiteColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ))
-            ],
-          ),
-        ),
-        body:ListView.builder(
+        // appBar: AppBar(
+        //   centerTitle: false,
+        //   backgroundColor: AppConstant.appColor,
+        //   title: Row(
+        //     mainAxisAlignment: MainAxisAlignment.start,
+        //     children: [
+        //       HeroIcon(HeroIcons.star,color: AppConstant.whiteColor),
+        //       SizedBox(width: 10),
+        //       Text("Experience",
+        //           style: context.copyWithStyle(
+        //             color: AppConstant.whiteColor,
+        //             fontSize: 18,
+        //             fontWeight: FontWeight.bold,
+        //           ))
+        //     ],
+        //   ),
+        // ),
+        body:Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Colors.deepPurpleAccent.shade400,
+                      Colors.amber,
+                      Colors.pink,
+
+                    ])
+            ),
+            child:ListView.builder(
+
 
           physics: ScrollPhysics(),
 
@@ -86,6 +99,7 @@ class ExperienceSection extends StatelessWidget {
                 child:  Padding(
                   padding: const EdgeInsets.all(15),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -120,7 +134,7 @@ class ExperienceSection extends StatelessWidget {
                         style: context.copyWithStyle(
                           color: AppConstant.blackColor,
                           fontWeight: FontWeight.bold,
-                          fontSize: 14,
+                          fontSize: 12,
                         ),
                         textAlign: TextAlign.justify,
                       ),
@@ -130,6 +144,6 @@ class ExperienceSection extends StatelessWidget {
               ),
             );
           },
-        ));
+        )));
   }
 }

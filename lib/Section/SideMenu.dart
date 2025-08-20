@@ -128,6 +128,8 @@ class _SideMenuState extends State<SideMenu> {
                   ))),*/
           SizedBox(height: 10),
           SingleChildScrollView(
+            physics: ScrollPhysics(),
+            scrollDirection: Axis.vertical,
             child: Column(
               children: [
                 MenuTile(

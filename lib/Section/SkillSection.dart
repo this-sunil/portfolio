@@ -60,73 +60,91 @@ class SkillSection extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        backgroundColor: AppConstant.appColor,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            HeroIcon(HeroIcons.scale, color: AppConstant.whiteColor),
-            SizedBox(width: 10),
-            Text("Skills",
-                style: context.copyWithStyle(
-                  color: AppConstant.whiteColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ))
-          ],
+      // appBar: AppBar(
+      //   centerTitle: false,
+      //   backgroundColor: AppConstant.appColor,
+      //   title: Row(
+      //     mainAxisAlignment: MainAxisAlignment.start,
+      //     children: [
+      //       HeroIcon(HeroIcons.scale, color: AppConstant.whiteColor),
+      //       SizedBox(width: 10),
+      //       Text("Skills",
+      //           style: context.copyWithStyle(
+      //             color: AppConstant.whiteColor,
+      //             fontSize: 18,
+      //             fontWeight: FontWeight.bold,
+      //           ))
+      //     ],
+      //   ),
+      // ),
+      body:Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.amber,
+                  Colors.pink,
+                  Colors.deepPurpleAccent.shade400
+                ])
         ),
+        child: GridView.builder(
+            physics: ScrollPhysics(),
+            padding: EdgeInsets.all(20),
+
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisSpacing: 2,
+                mainAxisSpacing: 2,
+                childAspectRatio: 1.5,
+
+                crossAxisCount: Responsive.isMobile(context)?1:3),
+            itemCount: skill.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8),
+                  child: Card(
+                    color: AppConstant.appColor,
+                    child: SfCircularChart(
+                      enableMultiSelection: true,
+                      tooltipBehavior: TooltipBehavior(enable: true),
+                      selectionGesture: ActivationMode.singleTap,
+                      title: ChartTitle(
+                          borderWidth: 20,
+                          text: skill[index].title,
+                          alignment: ChartAlignment.center,
+                          textStyle: context.copyWithStyle(
+                              fontWeight: FontWeight.bold,color: AppConstant.whiteColor, fontSize: 18)),
+                      legend: Legend(isVisible: true,textStyle: context.copyWithStyle(color: AppConstant.whiteColor)),
+                      series: <DoughnutSeries<ChartData, String>>[
+                        DoughnutSeries<ChartData, String>(
+                          groupMode: CircularChartGroupMode.point,
+                          dataSource: List.generate(skill[index].description.length, (current)=>ChartData(skill[index].description[current].category, skill[index].description[current].value,skill[index].description[current].color)),
+                          xValueMapper: (ChartData data, _) => data.category,
+                          yValueMapper: (ChartData data, _) => data.value,
+
+
+                          emptyPointSettings: EmptyPointSettings(
+                              mode: EmptyPointMode.gap,
+                              color: Colors.grey
+                          ),
+                          dataLabelSettings: DataLabelSettings(
+                              isVisible: true),
+                          radius: '70%', // Controls the outer size
+                          innerRadius: '50%',
+                          cornerStyle: CornerStyle.bothFlat,
+                          explodeGesture: ActivationMode.singleTap,
+                          enableTooltip: true,
+
+                          legendIconType: LegendIconType.diamond,
+
+                          animationDuration: 1000, // Duration in milliseconds
+                          explode: true, // Makes it a donut instead of pie
+                        )
+                      ],
+                    ),
+                  ));
+            }),
       ),
-      body: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisSpacing: 2,
-              mainAxisSpacing: 2,
-              crossAxisCount: Responsive.isMobile(context) ? 1 : 3),
-          itemCount: skill.length,
-          itemBuilder: (context, index) {
-            return Padding(
-                padding: EdgeInsets.symmetric(vertical: 8),
-                child: Card(
-                  color: AppConstant.appColor,
-                  child: SfCircularChart(
-                    enableMultiSelection: true,
-                    tooltipBehavior: TooltipBehavior(enable: true),
-                    selectionGesture: ActivationMode.singleTap,
-                    title: ChartTitle(
-                        text: skill[index].title,
-                        alignment: ChartAlignment.center,
-                        textStyle: context.copyWithStyle(
-                            fontWeight: FontWeight.bold,color: AppConstant.whiteColor, fontSize: 18)),
-                    legend: Legend(isVisible: true,textStyle: context.copyWithStyle(color: AppConstant.whiteColor)),
-                    series: <DoughnutSeries<ChartData, String>>[
-                      DoughnutSeries<ChartData, String>(
-                        groupMode: CircularChartGroupMode.point,
-                        dataSource: List.generate(skill[index].description.length, (current)=>ChartData(skill[index].description[current].category, skill[index].description[current].value,skill[index].description[current].color)),
-                        xValueMapper: (ChartData data, _) => data.category,
-                        yValueMapper: (ChartData data, _) => data.value,
-
-
-                        emptyPointSettings: EmptyPointSettings(
-                          mode: EmptyPointMode.gap,
-                          color: Colors.grey
-                        ),
-                        dataLabelSettings: DataLabelSettings(
-                            isVisible: true),
-                        radius: '70%', // Controls the outer size
-                        innerRadius: '50%',
-                        cornerStyle: CornerStyle.bothFlat,
-                        explodeGesture: ActivationMode.singleTap,
-                        enableTooltip: true,
-
-                        legendIconType: LegendIconType.diamond,
-
-                        animationDuration: 1000, // Duration in milliseconds
-                        explode: true, // Makes it a donut instead of pie
-                      )
-                    ],
-                  ),
-                ));
-          }),
     );
   }
 }

@@ -44,23 +44,23 @@ class EducationSection extends StatelessWidget {
     }).toList();
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        backgroundColor: AppConstant.appColor,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            HeroIcon(HeroIcons.academicCap,color: AppConstant.whiteColor),
-            SizedBox(width: 10),
-            Text("Education",
-                style: context.copyWithStyle(
-                  color: AppConstant.whiteColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ))
-          ],
-        ),
-      ),
+      // appBar: AppBar(
+      //   centerTitle: false,
+      //   backgroundColor: AppConstant.appColor,
+      //   title: Row(
+      //     mainAxisAlignment: MainAxisAlignment.start,
+      //     children: [
+      //       HeroIcon(HeroIcons.academicCap,color: AppConstant.whiteColor),
+      //       SizedBox(width: 10),
+      //       Text("Education",
+      //           style: context.copyWithStyle(
+      //             color: AppConstant.whiteColor,
+      //             fontSize: 18,
+      //             fontWeight: FontWeight.bold,
+      //           ))
+      //     ],
+      //   ),
+      // ),
       body: Container(
           height: MediaQuery.sizeOf(context).height,
           clipBehavior: Clip.hardEdge,
@@ -75,17 +75,24 @@ class EducationSection extends StatelessWidget {
           ),
           child:Column(
         children: [
-          SizedBox(
-              width: 300,
+          Flexible(
+              flex: 2,
+              child: SizedBox(
+              width: 150,
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Lottie.asset("assets/icons/job.json",width: 250,height: 250),
                 ],
-              )),
-          Expanded(child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+              ))),
+          Expanded(
+              flex: 4,
+              child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
             child: ListView.builder(
+              padding: EdgeInsets.zero,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: educationSteps.length,
               itemBuilder: (ctx, index) {
                 int nextIndex = index + 1;

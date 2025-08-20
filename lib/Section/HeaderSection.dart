@@ -23,10 +23,10 @@ class HeaderSection extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(height: 40),
+            SizedBox(height: 20),
             SizedBox(
-              width: 200,
-              height: 200,
+              width: 150,
+              height: 150,
               child: ScaleAnimation(
                 child: Card(
                   shape: CircleBorder(),

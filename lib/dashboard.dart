@@ -59,13 +59,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: drawerKey,
-      drawer: Responsive.isDesktop(context) ? null : SideMenu(controller: pageController),
-      appBar: Responsive.isDesktop(context)
-          ? null
-          : AppBar(
+      drawer:  SideMenu(controller: pageController),
+      appBar:  AppBar(
               elevation: 10,
               backgroundColor: Color(0xFF2B3A55),
-              title: Text("Portfolio",
+              title: Text(currentIndex==0?"Portfolio":currentIndex==1?"Experience":currentIndex==2?"Skills":currentIndex==3?"Education":currentIndex==4?"Projects":"Contact",
                   style: context.copyWithStyle(
                     color: AppConstant.whiteColor,
                     fontSize: 18,
@@ -77,7 +75,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: OutlinedButton.icon(
+
                         style: OutlinedButton.styleFrom(
+
                             backgroundColor: Colors.deepPurpleAccent,
                             padding: EdgeInsets.all(20),
                             side:
@@ -89,6 +89,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           HeroIcons.arrowDownCircle,
                           color: AppConstant.whiteColor,
                         ),
+
                         onPressed: () {
                           downloadFile(
                               'https://raw.githubusercontent.com/this-sunil/portfolio/main/Resume.pdf',
@@ -96,22 +97,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         },
                         label: Text("Download CV",
                             style: context.copyWithStyle(
-                                color: AppConstant.whiteColor)))),
+                                color: AppConstant.whiteColor,fontSize: 14,fontWeight: FontWeight.bold)))),
               ],
             ),
-      body: Row(
-        children: [
-          if (Responsive.isDesktop(context))
-            Expanded(
-              flex: 1,
-              child: SideMenu(controller: pageController),
-            ),
-          Expanded(
-              flex: 5,
-              child: PageView(
+      body:  PageView(
                 scrollDirection: Axis.vertical,
                 controller: pageController,
-                physics: ClampingScrollPhysics(),
+                clipBehavior: Clip.hardEdge,
+                scrollBehavior: ScrollBehavior().copyWith(overscroll: false),
+                physics: ScrollPhysics(),
                 onPageChanged: (index) {
                   setState(() {
                     currentIndex = index;
@@ -125,9 +119,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ProjectSection(),
                   ContactSection()
                 ],
-              ))
-        ],
-      ),
+              )
     );
   }
 }

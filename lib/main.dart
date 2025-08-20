@@ -32,6 +32,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppConstant.appName,
+      scrollBehavior: ScrollBehavior().copyWith(
+        overscroll: false,
+        physics: ClampingScrollPhysics()
+      ),
       theme: ThemeData(
 
         // This is the theme of your application.

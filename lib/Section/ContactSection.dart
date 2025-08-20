@@ -38,27 +38,29 @@ class _ContactSectionState extends State<ContactSection> {
 
   @override
   Widget build(BuildContext context) {
+    final size=MediaQuery.sizeOf(context);
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: false,
-          backgroundColor: AppConstant.appColor,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              HeroIcon(HeroIcons.devicePhoneMobile,
-                  color: AppConstant.whiteColor),
-              SizedBox(width: 10),
-              Text("Contact",
-                  style: context.copyWithStyle(
-                    color: AppConstant.whiteColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ))
-            ],
-          ),
-        ),
+        // appBar: AppBar(
+        //   centerTitle: false,
+        //   backgroundColor: AppConstant.appColor,
+        //   title: Row(
+        //     mainAxisAlignment: MainAxisAlignment.start,
+        //     children: [
+        //       HeroIcon(HeroIcons.devicePhoneMobile,
+        //           color: AppConstant.whiteColor),
+        //       SizedBox(width: 10),
+        //       Text("Contact",
+        //           style: context.copyWithStyle(
+        //             color: AppConstant.whiteColor,
+        //             fontSize: 18,
+        //             fontWeight: FontWeight.bold,
+        //           ))
+        //     ],
+        //   ),
+        // ),
         body: Container(
-            height: MediaQuery.sizeOf(context).height,
+          width: size.width,
+            height: size.height,
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -81,79 +83,83 @@ class _ContactSectionState extends State<ContactSection> {
                   ),
                 Expanded(
                     flex: 5,
-                    child:  Card(
-                      color: Colors.white,
-                      clipBehavior: Clip.hardEdge,
-                      child:  Padding(padding: EdgeInsets.symmetric(horizontal: 30),child: Form(
-                          key: formKey,
-                          child:Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(padding: EdgeInsets.all(10),child: Text("Contact",style: context.copyWithStyle(fontSize: 18,fontWeight: FontWeight.bold))),
+                    child: SizedBox(
+                      width: size.width*.88,
+                      child: Card(
+                        margin: EdgeInsets.zero,
+                          color: Colors.white,
+                          clipBehavior: Clip.hardEdge,
+                          child:  Padding(padding: EdgeInsets.symmetric(horizontal: 60),child: Form(
+                              key: formKey,
+                              child:Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(padding: EdgeInsets.all(10),child: Text("Contact",style: context.copyWithStyle(fontSize: 18,fontWeight: FontWeight.bold))),
 
-                              Padding(
-                                  padding: EdgeInsets.all(8),
-                                  child: TextFormField(
-                                    controller: subject,
-                                    keyboardType: TextInputType.text,
-                                    validator: (val) {
-                                      if (val!.isEmpty) {}
-                                      return null;
-                                    },
-                                    decoration: InputDecoration(
-                                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10)),
-                                      labelText: "Enter your Subject",
-                                    ),
-                                  )),
-                              Padding(
-                                  padding: EdgeInsets.all(8),
-                                  child: TextFormField(
-                                    controller: msg,
-                                    validator: (val) {
-                                      if (val!.isEmpty) {}
-                                      return null;
-                                    },
-                                    maxLines: 5,
-                                    decoration: InputDecoration(
-                                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10)),
-                                      labelText: "Enter your message",
-                                    ),
-                                  )),
-                              SizedBox(height: 20),
-                              SizedBox(
-                                height: 50,
-                                width: MediaQuery.sizeOf(context).width,
-                                child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
+                                  Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: TextFormField(
+                                        controller: subject,
+                                        keyboardType: TextInputType.text,
+                                        validator: (val) {
+                                          if (val!.isEmpty) {}
+                                          return null;
+                                        },
+                                        decoration: InputDecoration(
+                                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                                          border: OutlineInputBorder(
+                                              borderRadius: BorderRadius.circular(10)),
+                                          labelText: "Enter your Subject",
+                                        ),
+                                      )),
+                                  Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: TextFormField(
+                                        controller: msg,
+                                        validator: (val) {
+                                          if (val!.isEmpty) {}
+                                          return null;
+                                        },
+                                        maxLines: 5,
+                                        decoration: InputDecoration(
+                                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                                          border: OutlineInputBorder(
+                                              borderRadius: BorderRadius.circular(10)),
+                                          labelText: "Enter your message",
+                                        ),
+                                      )),
+                                  SizedBox(height: 20),
+                                  SizedBox(
+                                    height: 50,
+                                    width: MediaQuery.sizeOf(context).width,
+                                    child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
 
-                                        backgroundColor: AppConstant.greenColor,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(30))),
-                                    onPressed: () {
-                                      if (formKey.currentState!.validate()) {
-                                        final Uri params = Uri(
-                                          scheme: 'mailto',
-                                          path: 'swarajya888@gmail.com',
-                                          query: 'subject=${Uri.encodeComponent(subject.text)}&body=${Uri.encodeComponent(msg.text)}',
-                                        );
-                                        AppConstant().launchUri(params);
-                                        formKey.currentState!.save();
-                                      }
-                                    },
-                                    child: Text("Submit",
-                                        style: context.copyWithStyle(
-                                            color: AppConstant.whiteColor,
-                                            fontSize: 16))),
-                              )
-                            ],
+                                            backgroundColor: AppConstant.greenColor,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(30))),
+                                        onPressed: () {
+                                          if (formKey.currentState!.validate()) {
+                                            final Uri params = Uri(
+                                              scheme: 'mailto',
+                                              path: 'swarajya888@gmail.com',
+                                              query: 'subject=${Uri.encodeComponent(subject.text)}&body=${Uri.encodeComponent(msg.text)}',
+                                            );
+                                            AppConstant().launchUri(params);
+                                            formKey.currentState!.save();
+                                          }
+                                        },
+                                        child: Text("Submit",
+                                            style: context.copyWithStyle(
+                                                color: AppConstant.whiteColor,
+                                                fontSize: 16))),
+                                  )
+                                ],
+                              )),
+
                           )),
-
-                      )),
+                    ),
                     )
               ],
             )))
