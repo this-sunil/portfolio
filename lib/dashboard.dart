@@ -79,7 +79,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         style: OutlinedButton.styleFrom(
 
                             backgroundColor: Colors.deepPurpleAccent,
-                            padding: EdgeInsets.all(20),
+                            padding: EdgeInsets.all(18),
                             side:
                                 BorderSide(width: 4, color: Colors.deepPurple),
                             shape: RoundedRectangleBorder(
@@ -88,6 +88,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         icon: HeroIcon(
                           HeroIcons.arrowDownCircle,
                           color: AppConstant.whiteColor,
+
                         ),
 
                         onPressed: () {
@@ -97,10 +98,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         },
                         label: Text("Download CV",
                             style: context.copyWithStyle(
-                                color: AppConstant.whiteColor,fontSize: 12,fontWeight: FontWeight.bold)))),
+                                color: AppConstant.whiteColor,fontSize: 14,fontWeight: FontWeight.bold)))),
               ],
             ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.amber,
+        shape: CircleBorder(),
+        onPressed: (){
         currentIndex==5?pageController.animateToPage(0,  duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn):pageController.nextPage(duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
       },child: Icon(Icons.keyboard_arrow_right_outlined),),
       body:  PageView(
@@ -108,8 +112,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 controller: pageController,
 
                 clipBehavior: Clip.hardEdge,
-                scrollBehavior: ScrollBehavior().copyWith(overscroll: false),
-                physics: BouncingScrollPhysics(),
+
+
                 onPageChanged: (index) {
                   setState(() {
                     currentIndex = index;

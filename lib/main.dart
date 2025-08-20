@@ -34,7 +34,6 @@ class MyApp extends StatelessWidget {
       title: AppConstant.appName,
       scrollBehavior: ScrollBehavior().copyWith(
         overscroll: false,
-        physics: ClampingScrollPhysics()
       ),
       theme: ThemeData(
 

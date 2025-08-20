@@ -58,6 +58,7 @@ class SkillSection extends StatelessWidget {
         ChartData("App Store Publishing", 60,getRandomColor())
       ]),
     ];
+    final size=MediaQuery.sizeOf(context);
 
     return Container(
         decoration: BoxDecoration(
@@ -77,8 +78,8 @@ class SkillSection extends StatelessWidget {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisSpacing: 1,
                 mainAxisSpacing: 1,
-                childAspectRatio: Responsive.isMobile(context)?9/16:16/9,
-                crossAxisCount: Responsive.isMobile(context)?2:3),
+                childAspectRatio:size.width/size.height,
+                crossAxisCount: 2),
             itemCount: skill.length,
             itemBuilder: (context, index) {
               return Padding(
