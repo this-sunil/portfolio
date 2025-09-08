@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:heroicons/heroicons.dart';
+
 
 import '../AppConstant.dart';
 import '../Model/Info.dart';
@@ -14,14 +14,11 @@ class ExperienceSection extends StatelessWidget {
 \u{2022} Configured AdMob App ID and set up Banner Ads, Interstitial Ads, and Rewarded Ads.
 \u{2022} Utilized the google_mobile_ads Flutter package for seamless ad rendering.
 \u{2022} Implemented platform-specific configurations for Android (AndroidManifest.xml) and ios (Info.plist).
-\u{2022} Tested ad functionality on both real devices and emulators using test Ad Unit IDs.
 \u{2022} Integrated third-party libraries (Firebase, Google Maps, RazorPay) improving app performance and backend communication by up to 40%.
 \u{2022} Used Bloc for state management, improving code scalability and maintainability by 50%.
 \u{2022} Managed app store deployment processes (Play Store & App Store), reducing time-to-market by up to 60%.
 \u{2022} Designed interactive UI components and animations, increasing user engagement by
 25-35%.
-\u{2022} Collaborated with backend teams for optimized RESTful API integration, boosting app
-speed and responsiveness.
 
 
 """;
