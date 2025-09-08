@@ -5,19 +5,17 @@ import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:portfolio/AppConstant.dart';
-import 'dart:html' as html;
+import 'package:web/web.dart' as web;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:portfolio/dashboard.dart';
 
 void downloadFile(String url, String fileName) {
-// Create a new anchor (<a>) element
-  final html.AnchorElement anchor = html.AnchorElement(href: url)
+  final anchor=(web.document.createElement("a") as web.HTMLAnchorElement)
+    ..href = url
     ..setAttribute(
-        'download', fileName) // Specify the file name for the download
-    ..target =
-        'blank'; // Optional, to open in a new tab (not necessary for download)
-
-// Trigger the download by simulating a click event
+        'download', fileName)
+    ..target='blank'
+    ..click();
   anchor.click();
 }
 
