@@ -40,6 +40,11 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   late PageController pageController;
   int currentIndex = 0;
+  multiSelect(int index) {
+    selected.clear();
+    selected.add(index);
+    Future.delayed(Duration(milliseconds: 100), () => setState(() {}));
+  }
   @override
   void initState() {
     // TODO: implement initState
@@ -131,6 +136,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             setState(() {
               currentIndex = index;
             });
+            multiSelect(currentIndex);
           },
           children: [
             HeaderSection(),
