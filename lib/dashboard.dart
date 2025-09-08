@@ -100,7 +100,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     onPressed: () {
                       downloadFile(
-                          'https://raw.githubusercontent.com/this-sunil/portfolio/main/Resume.pdf',
+                          'https://raw.githubusercontent.com/this-sunil/portfolio/main/Sunil_Shedge _Resume.pdf',
                           'sunil-shedge_cv.jpg');
                     },
                     label: Text("Download CV",

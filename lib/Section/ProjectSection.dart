@@ -23,17 +23,17 @@ class ProjectSection extends StatelessWidget {
           'Enabled secure UPI payments using flutter_upi_pay.',
         ],
       ),
-      Project(
-        title: 'Rajyog Matka',
-        duration: 'Aug 2024 - Aug 2024',
-        playStoreLink: 'https://dhankalyanmatka.com/',
-        features: [
-          'Developed core Matka game features: Single, Double, Triple, Family Pana.',
-          'Integrated FCM and OneSignal for push notifications.',
-          'Added secure UPI payment system with flutter_upi_pay.',
-          'Connected backend APIs for smooth withdrawal functionality.',
-        ],
-      ),
+      // Project(
+      //   title: 'Rajyog Matka',
+      //   duration: 'Aug 2024 - Aug 2024',
+      //   playStoreLink: 'https://dhankalyanmatka.com/',
+      //   features: [
+      //     'Developed core Matka game features: Single, Double, Triple, Family Pana.',
+      //     'Integrated FCM and OneSignal for push notifications.',
+      //     'Added secure UPI payment system with flutter_upi_pay.',
+      //     'Connected backend APIs for smooth withdrawal functionality.',
+      //   ],
+      // ),
       Project(
         title: 'Grow Knowledge',
         duration: 'Oct 2023 - Nov 2023',
