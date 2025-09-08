@@ -106,16 +106,7 @@ class HeaderSection extends StatelessWidget {
                                                  fontWeight: FontWeight.bold),
                                              speed: const Duration(milliseconds: 100),
                                            ),
-                                           TypewriterAnimatedText(
-                                             '3+ years of experience',
-                                             cursor: "|",
-                                             textStyle: context.copyWithStyle(
-                                                 fontSize: 24.0,
-                                                 color: AppConstant.whiteColor,
 
-                                                 fontWeight: FontWeight.bold),
-                                             speed: const Duration(milliseconds: 100),
-                                           ),
                                          ],
                                          isRepeatingAnimation: true,
                                          totalRepeatCount: 10,
@@ -142,7 +133,7 @@ class HeaderSection extends StatelessWidget {
                           Expanded(child: Padding(
                             padding: const EdgeInsets.all(8),
                             child: Text(
-                              "A passionate UI developer, with hands on experience of building high performing mobile applications, having a strong technical background. Highly adaptive to new technologies and frameworks & ready for all challenges associated with the industry.",
+                              """I am a passionate Flutter Developer with 3+ years of experience in crafting high-performing mobile applications for both Android and iOS. With a strong technical foundation and a keen focus on UI/UX and performance optimization, I excel at leveraging new technologies to enhance app functionality and user experience. I thrive in dynamic environments and am dedicated to producing seamless, user-friendly applications.""",
                               style: context.copyWithStyle(
                                   color: AppConstant.whiteColor,
                                   fontSize: 16,
