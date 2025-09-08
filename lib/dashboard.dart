@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:portfolio/Section/ExperienceSection.dart';
 
-
 import 'AppConstant.dart';
-import 'Responsive.dart';
+
 import 'package:portfolio/Section/SideMenu.dart';
 
 import 'Section/ContactSection.dart';
@@ -27,8 +26,10 @@ void downloadFile(String url, String fileName) {
 // Trigger the download by simulating a click event
   anchor.click();
 }
-final GlobalKey<ScaffoldState> drawerKey=GlobalKey<ScaffoldState>();
+
+final GlobalKey<ScaffoldState> drawerKey = GlobalKey<ScaffoldState>();
 HashSet<int> selected = HashSet<int>();
+
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -38,7 +39,7 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   late PageController pageController;
-  int currentIndex=0;
+  int currentIndex = 0;
   @override
   void initState() {
     // TODO: implement initState
@@ -58,77 +59,87 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: drawerKey,
-      drawer:  SideMenu(controller: pageController),
-      appBar:  AppBar(
-              elevation: 10,
-              backgroundColor: Color(0xFF2B3A55),
-              title: Text(currentIndex==0?"Portfolio":currentIndex==1?"Experience":currentIndex==2?"Skills":currentIndex==3?"Education":currentIndex==4?"Projects":"Contact",
-                  style: context.copyWithStyle(
-                    color: AppConstant.whiteColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  )),
-              centerTitle: false,
-              iconTheme: IconThemeData(color: AppConstant.whiteColor),
-              actions: [
-                Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: OutlinedButton.icon(
-
-                        style: OutlinedButton.styleFrom(
-
-                            backgroundColor: Colors.deepPurpleAccent,
-                            padding: EdgeInsets.all(18),
-                            side:
-                                BorderSide(width: 4, color: Colors.deepPurple),
-                            shape: RoundedRectangleBorder(
-                                side: BorderSide(color: AppConstant.whiteColor),
-                                borderRadius: BorderRadius.circular(30))),
-                        icon: HeroIcon(
-                          HeroIcons.arrowDownCircle,
-                          color: AppConstant.whiteColor,
-
-                        ),
-
-                        onPressed: () {
-                          downloadFile(
-                              'https://raw.githubusercontent.com/this-sunil/portfolio/main/Resume.pdf',
-                              'sunil-shedge_cv.jpg');
-                        },
-                        label: Text("Download CV",
-                            style: context.copyWithStyle(
-                                color: AppConstant.whiteColor,fontSize: 14,fontWeight: FontWeight.bold)))),
-              ],
-            ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.amber,
-        shape: CircleBorder(),
-        onPressed: (){
-        currentIndex==5?pageController.animateToPage(0,  duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn):pageController.nextPage(duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn);
-      },child: Icon(Icons.keyboard_arrow_right_outlined),),
-      body:  PageView(
-                scrollDirection: Axis.vertical,
-                controller: pageController,
-
-                clipBehavior: Clip.hardEdge,
-
-
-                onPageChanged: (index) {
-                  setState(() {
-                    currentIndex = index;
-                  });
-                },
-                children: [
-                  HeaderSection(),
-                  ExperienceSection(),
-                  SkillSection(),
-                  EducationSection(),
-                  ProjectSection(),
-                  ContactSection()
-                ],
-              )
-
-    );
+        key: drawerKey,
+        drawer: SideMenu(controller: pageController),
+        appBar: AppBar(
+          elevation: 10,
+          backgroundColor: Color(0xFF2B3A55),
+          title: Text(
+              currentIndex == 0
+                  ? "Portfolio"
+                  : currentIndex == 1
+                      ? "Experience"
+                      : currentIndex == 2
+                          ? "Skills"
+                          : currentIndex == 3
+                              ? "Education"
+                              : currentIndex == 4
+                                  ? "Projects"
+                                  : "Contact",
+              style: context.copyWithStyle(
+                color: AppConstant.whiteColor,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              )),
+          centerTitle: false,
+          iconTheme: IconThemeData(color: AppConstant.whiteColor),
+          actions: [
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: OutlinedButton.icon(
+                    style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.deepPurpleAccent,
+                        padding: EdgeInsets.all(18),
+                        side: BorderSide(width: 4, color: Colors.deepPurple),
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(color: AppConstant.whiteColor),
+                            borderRadius: BorderRadius.circular(30))),
+                    icon: HeroIcon(
+                      HeroIcons.arrowDownCircle,
+                      color: AppConstant.whiteColor,
+                    ),
+                    onPressed: () {
+                      downloadFile(
+                          'https://raw.githubusercontent.com/this-sunil/portfolio/main/Resume.pdf',
+                          'sunil-shedge_cv.jpg');
+                    },
+                    label: Text("Download CV",
+                        style: context.copyWithStyle(
+                            color: AppConstant.whiteColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold)))),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.amber,
+          shape: CircleBorder(),
+          onPressed: () {
+            currentIndex == 5
+                ? pageController.animateToPage(0,
+                    duration: Duration(seconds: 1), curve: Curves.fastOutSlowIn)
+                : pageController.nextPage(
+                    duration: Duration(seconds: 1),
+                    curve: Curves.fastOutSlowIn);
+          },
+          child: Icon(Icons.keyboard_arrow_right_outlined),
+        ),
+        body: PageView(
+          scrollDirection: Axis.vertical,
+          controller: pageController,
+          clipBehavior: Clip.hardEdge,
+          onPageChanged: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          children: [
+            HeaderSection(),
+            ExperienceSection(),
+            SkillSection(),
+            EducationSection(),
+            ProjectSection(),
+            ContactSection()
+          ],
+        ));
   }
 }
