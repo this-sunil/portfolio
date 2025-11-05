@@ -49,26 +49,31 @@ class ExperienceSection extends StatelessWidget {
       ),
     ];
     return Container(
+
             decoration: BoxDecoration(
-                color: AppConstant.whiteColor
+                gradient: SweepGradient(
+                    tileMode: TileMode.mirror,
+                    transform: GradientRotation(60),
+                    colors: [
+                      Colors.redAccent, Colors.deepPurpleAccent.shade700
+
+                ])
             ),
             child:ListView.builder(
 
 
           physics: NeverScrollableScrollPhysics(),
 
+
           padding: EdgeInsets.all(8),
           itemCount: company.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Container(
+              child: Card(
+                elevation: 8,
                 clipBehavior: Clip.hardEdge,
-                decoration:  BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: AppConstant.whiteColor
-
-                ),
+                color: AppConstant.whiteColor,
                 child:  Padding(
                   padding: const EdgeInsets.all(10),
                   child: Column(
