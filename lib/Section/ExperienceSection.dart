@@ -66,14 +66,7 @@ class ExperienceSection extends StatelessWidget {
                 clipBehavior: Clip.hardEdge,
                 decoration:  BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Colors.tealAccent,
-                          Colors.tealAccent,
-                          Colors.deepPurpleAccent.shade400
-                        ])
+                    color: AppConstant.whiteColor
 
                 ),
                 child:  Padding(
