@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../AppConstant.dart';
 import '../Model/ChartData.dart';
@@ -71,15 +72,17 @@ class SkillSection extends StatelessWidget {
                   Colors.deepPurpleAccent.shade400
                 ])
         ),
-        child: GridView.builder(
+        child: ResponsiveGridView.builder(
           clipBehavior: Clip.hardEdge,
             physics:BouncingScrollPhysics(),
             padding: EdgeInsets.all(8),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisSpacing: 1,
-                mainAxisSpacing: 1,
-                childAspectRatio:size.width/size.height,
-                crossAxisCount: 2),
+            alignment:AlignmentGeometry.center,
+            gridDelegate: ResponsiveGridDelegate(
+              crossAxisSpacing: 2,
+              mainAxisSpacing: 2,
+              crossAxisExtent: Responsive.isMobile(context)?450:400,
+              childAspectRatio: size.width/size.height, // Square items
+            ),
             itemCount: skill.length,
             itemBuilder: (context, index) {
               return Padding(

@@ -50,15 +50,7 @@ class ExperienceSection extends StatelessWidget {
     ];
     return Container(
             decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Colors.deepPurpleAccent.shade400,
-                      Colors.amber,
-                      Colors.pink,
-
-                    ])
+                color: AppConstant.whiteColor
             ),
             child:ListView.builder(
 
