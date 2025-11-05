@@ -37,7 +37,7 @@ class ExperienceSection extends StatelessWidget {
         heading: "Sunra SoftTech Pvt ltd, Pune",
         subtitle: "Flutter Developer",
         startYear: "JULY 2022",
-        endYear: "PRESENT",
+        endYear: "APRIL 2025",
         status: firstStatus,
       ),
       Info(
