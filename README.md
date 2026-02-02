@@ -5,8 +5,6 @@ A new Flutter project.
 ## Getting Started
 
 
-Farmer Brand – Farmer-to-Consumer Platform
-
 ##Live Demo: https://farmer-brand.vercel.app/
 
 Farmer Brand is a farmer-to-consumer digital platform designed to help farmers showcase and sell their agricultural products directly to customers, eliminating middlemen and improving profitability.
